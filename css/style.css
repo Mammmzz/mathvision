@@ -55,6 +55,16 @@ body {
     margin: 0 auto;
 }
 
+.input-panel {
+    display: flex;
+    flex-direction: column;
+}
+
+.actions-panel .btn-grid,
+.controls-panel .btn-grid {
+    grid-template-columns: 1fr 1fr;
+}
+
 .sidebar {
     display: flex;
     flex-direction: column;
@@ -142,6 +152,9 @@ body {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+}
+
+.btn-grid .btn {
     width: 100%;
 }
 .btn:hover {
