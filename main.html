@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MathVision - Aplikasi visualisasi matematika untuk pendidikan Indonesia">
+    <title>MathVision - Visualisasi Matematika Interaktif</title>
+    
+    <!-- Ngambil font dari Google biar cakep -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+    
+    <!-- Ngambil file CSS buat styling -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div id="confetti-container"></div>
+
+    <header class="app-header">
+        <h1 class="title">MathVision</h1>
+        <p class="subtitle">Editor Visual Matematika</p>
+    </header>
+
+    <div class="dashboard-layout">
+        
+        <!-- Ini bagian menu samping (sidebar) -->
+        <aside class="sidebar">
+            <section class="panel input-panel">
+                <h2 class="panel-title">1. Persamaan</h2>
+                <input 
+                    type="text" 
+                    id="equation-input" 
+                    class="equation-input" 
+                    placeholder="x^2 + 2*x"
+                    value="x^2"
+                    autocomplete="off"
+                >
+                <button id="visualize-btn" class="btn btn-primary">
+                    Visualisasikan
+                </button>
+                <div id="error-message" class="error-message"></div>
+            </section>
+
+            <section class="panel controls-panel">
+                <h2 class="panel-title">2. Transformasi</h2>
+                <div class="btn-grid">
+                    <button id="reflect-btn" class="btn btn-transform">Refleksi X</button>
+                    <button id="reflect-y-btn" class="btn btn-transform">Refleksi Y</button>
+                    <button id="dilate-btn" class="btn btn-transform">Dilatasi 2x</button>
+                    <button id="dilate-half-btn" class="btn btn-transform">Dilatasi 1/2x</button>
+                    <button id="shift-btn" class="btn btn-transform">Geser Kanan</button>
+                    <button id="shift-left-btn" class="btn btn-transform">Geser Kiri</button>
+                </div>
+            </section>
+            
+            <section class="panel actions-panel">
+                <h2 class="panel-title">3. Alat</h2>
+                <div class="btn-grid">
+                    <button id="accessibility-btn" class="btn btn-secondary">Aksesibilitas</button>
+                    <button id="export-btn" class="btn btn-secondary">Simpan</button>
+                    <button id="compare-btn" class="btn btn-secondary">Bandingkan</button>
+                </div>
+            </section>
+
+            <section class="panel inspect-panel">
+                <h2 class="panel-title">4. Inspeksi Titik</h2>
+                <label for="inspect-x-input" class="inspect-label">Masukkan nilai x:</label>
+                <input type="number" id="inspect-x-input" class="equation-input" placeholder="e.g., 2">
+                <div id="inspect-result" class="inspect-result"></div>
+            </section>
+        </aside>
+
+        <!-- Ini bagian konten utama, tempat grafiknya muncul -->
+        <main class="main-content">
+            <div class="panel chart-panel">
+                <h2 class="panel-title">Kanvas Grafik</h2>
+                <div id="loading-overlay" class="loading-overlay" style="display: none;">
+                    <div class="spinner"></div>
+                </div>
+                <div id="chart-container" class="chart-container">
+                    <canvas id="math-chart"></canvas>
+                </div>
+                
+                <div id="accessibility-text" class="accessibility-text" style="display: none;">
+                    <h3 class="accessibility-title">Deskripsi Teks Grafik</h3>
+                    <p id="accessibility-description"></p>
+                </div>
+
+                <div id="calculation-example">
+                    <!-- Isinya nanti diisi sama JavaScript -->
+                </div>
+
+                <!-- Panel buat ngebandingin grafik, awalnya ngumpet -->
+                <div id="comparison-panel" class="panel floating-panel" style="display: none;">
+                    <h3 class="panel-title">Kontrol Transformasi: y = a·f(x-h) + k</h3>
+                    <div class="slider-group">
+                        <label for="slider-a">Nilai a: <span id="slider-a-value">1.0</span></label>
+                        <input type="range" id="slider-a" min="-2" max="2" value="1" step="0.1" class="slider">
+                    </div>
+                    <div class="slider-group">
+                        <label for="slider-h">Nilai h: <span id="slider-h-value">0.0</span></label>
+                        <input type="range" id="slider-h" min="-5" max="5" value="0" step="0.5" class="slider">
+                    </div>
+                    <div class="slider-group">
+                        <label for="slider-k">Nilai k: <span id="slider-k-value">0.0</span></label>
+                        <input type="range" id="slider-k" min="-5" max="5" value="0" step="0.5" class="slider">
+                    </div>
+                    <p id="comparison-equation" class="comparison-equation-display"></p>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <!-- Ngambil library dari luar (CDN) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    
+    <!-- Ngambil file-file JavaScript kita -->
+    <script src="js/math-core.js"></script>
+    <script src="js/chart-renderer.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,45 @@
+# MathVision - Git Ignore File
+
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temporary Files
+*.tmp
+*.temp
+
+# Backup Files
+*.bak
+*.backup
+
+# Node Modules (jika nanti digunakan)
+node_modules/
+
+# Build Output (jika ada)
+dist/
+build/
+
+# Environment Files
+.env
+.env.local
+.env.production
+
+# Test Coverage
+coverage/
+
+# Package Manager
+package-lock.json
+yarn.lock
+
